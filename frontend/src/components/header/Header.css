@@ -1,0 +1,62 @@
+.userLine {
+    display: flex;
+    background-color: rgb(250, 250, 250);
+    padding: 1%;
+    align-items: center;
+}
+.authBlock {
+    border-right: 2px solid rgb(175, 175, 175);
+    margin-right: 2%;
+    padding-right: 2%;
+}
+.authBlock > a {
+    color: rgb(175, 175, 175);
+}
+.authBlock > a:hover {
+    color: rgb(121, 121, 121);
+}
+.emptyItem {
+    flex-grow: 1;
+}
+.logo {
+    color: rgb(175, 175, 175);
+}
+.logo > img {
+    width: 100%;
+}
+.searchLine {
+    background-color: #C34F24;
+    margin: 1%;
+}
+.searchLine > form {
+    display: flex;
+}
+.form-select {
+    margin: 1%;
+}
+.form-select:focus {
+    border-color: none; 
+    outline: none;
+    box-shadow: none;
+}
+.category {
+    display: flex;
+    justify-content: space-around;
+    text-align: center;
+}
+.categoryItem {
+    margin-top: 2%;
+    color: rgb(175, 175, 175);
+    border: none;
+    background: none;
+}
+.categoryItem:focus {
+    color: #198754;
+    scale: 0.9;
+}
+.categoryItem > svg {
+    font-size: 128px;
+}
+.categoryItem > p {
+    font-weight: bold;
+}
