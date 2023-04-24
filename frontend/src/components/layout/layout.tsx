@@ -1,6 +1,7 @@
 import React from 'react'
 import {Container, Row, Col} from 'react-bootstrap'
 import Header from '../header/Header'
+import Sidebar from '../sidebar/Sidebar'
 
 const layout = (props:any) => {
 
@@ -13,7 +14,7 @@ const layout = (props:any) => {
             </Row>
             <Row>
                 <Col xxl={3} xl={3} lg={3} md={3} className='sidebar'>
-                    <h1>Sidebar</h1>
+                    <Sidebar/>
                 </Col>
                 <Col xxl={9} xl={9} lg={9} md={9} className='content'>
                     {props.children}
