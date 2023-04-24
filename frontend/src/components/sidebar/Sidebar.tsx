@@ -3,9 +3,10 @@ import { Accordion } from "react-bootstrap";
 import './Sidebar.css'
 
 const Sidebar = (props:any) => {
+    //defaultActiveKey="0"
     return(
-        <div className="sidebar">
-            <Accordion defaultActiveKey="0">
+        <div className="sidebar maim-margin-top">
+            <Accordion>
                 <Accordion.Item eventKey="0">
                     <Accordion.Header>Accordion Item #1</Accordion.Header>
                     <Accordion.Body>

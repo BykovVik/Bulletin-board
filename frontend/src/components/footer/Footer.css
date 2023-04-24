@@ -1,0 +1,27 @@
+.footer-wrap {
+    background: #2F2F2F;
+    padding-bottom: 2%;
+}
+.footer {
+    display: flex;
+    justify-content: space-around;
+    color: white;
+    font-size: 12px;
+    padding: 4%;
+}
+.footer > div > ul > li > a {
+    color: white;
+}
+.footer > div > ul > li > a > svg {
+    font-size: 36px;
+    margin-right: 15px;
+}
+.copyright {
+    text-align: center;
+}
+.copyright > a {
+    color: white;
+}
+.copyright > a > svg {
+    font-size: 24px;
+}
