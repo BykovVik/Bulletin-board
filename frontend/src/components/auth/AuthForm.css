@@ -1,0 +1,21 @@
+.loginForm {
+    display: flex;
+    height: 100vh;
+    justify-content: center;
+}
+.loginForm > form {
+    align-self: center;
+}
+.loginForm > form > button {
+    width: 100%;
+}
+.authLogo {
+    display: flex;
+    justify-content: center;
+    margin-bottom: 50px;
+}
+.navBlock {
+    margin-top: 12px;
+    justify-content: center;
+    display: flex;
+}

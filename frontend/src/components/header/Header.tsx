@@ -5,6 +5,7 @@ import logo from './logo.png'
 import {BsFillHouseAddFill, BsFillCarFrontFill, BsTools, BsWrenchAdjustableCircleFill, BsTvFill, BsFillPeopleFill, BsSignpostSplitFill, BsTencentQq} from 'react-icons/bs'
 import {RiTShirtFill} from 'react-icons/ri'
 import {GiCapybara} from "react-icons/gi";
+import { Link } from "react-router-dom";
 
 const Header = (props:any) => {
 
@@ -12,11 +13,11 @@ const Header = (props:any) => {
         <>
             <div className="userLine">
                 <div className="logo">
-                    <img src={logo} alt="" />
+                    <img src={logo} alt="logo" />
                 </div>
                 <div className="emptyItem"></div>
                 <div className="authBlock">
-                    <a href="">Sign up/Login</a>
+                    <Link to={`/login`}>Sign up/Login</Link>
                 </div>
                 <div>
                     <Button variant="success">Write an ad</Button>
