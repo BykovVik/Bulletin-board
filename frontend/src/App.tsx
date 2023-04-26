@@ -1,15 +1,14 @@
 import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css'
 import './App.css';
-import Layout from './components/layout/layout'
+import { Route, Routes } from 'react-router-dom';
+import Home from './pages/Home';
 
 function App() {
     return (
-        <Layout>
-            <div className="App">
-                <h1>Board</h1>
-            </div>
-        </Layout>
+        <Routes>
+            <Route path='/' element={<Home/>} />
+        </Routes>
     );
 }
 
