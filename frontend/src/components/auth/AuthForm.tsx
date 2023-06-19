@@ -2,7 +2,11 @@ import React from "react";
 import LoginForm from "./LoginForm";
 import RegForm from "./RegForm";
 
-const AuthForm = (props:any) => {
+type Props = {
+    title: String
+}
+
+const AuthForm = (props:Props) => {
     return(
         <>
             {props.title === 'login' &&

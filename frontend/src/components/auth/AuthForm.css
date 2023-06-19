@@ -19,3 +19,21 @@
     justify-content: center;
     display: flex;
 }
+.fade-in {
+    opacity: 0;
+    animation-name: fadeInOpacity;
+    animation-duration: 2s;
+    animation-fill-mode: forwards;
+  }
+  
+  @keyframes fadeInOpacity {
+    0% {
+      opacity: 0;
+    }
+    100% {
+      opacity: 1;
+    }
+  }
+.fade-none {
+    opacity: 0;
+}
