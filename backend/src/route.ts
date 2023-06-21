@@ -21,7 +21,7 @@ routes.post('/api/auth/register', async (req, res) => {
         // checking that there is no user with such email in the database
         const existingUser = await User.findOne({ email });
         if (existingUser) {
-            return res.status(400);
+            return res.status(400).json({ message: 'Пользователь с таким email уже зарегистрирован' });
         }
 
         // hash password bigin save in db

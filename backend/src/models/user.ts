@@ -17,7 +17,7 @@ const userSchema = new Schema({
     password: String,
     birthdate: Date,
     avatar: String,
-    phone: {type: String, unique:true},
+    phone: String,
 })
 
 export default model<User>('User', userSchema)
