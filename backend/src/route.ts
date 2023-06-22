@@ -2,6 +2,7 @@ import { Router } from 'express';
 import User from './models/user';
 import bcrypt from 'bcrypt'
 import jwt from 'jsonwebtoken'
+import getToken from './jwt_generate'
 
 const routes = Router();
 
@@ -37,14 +38,10 @@ routes.post('/api/auth/register', async (req, res) => {
         await newUser.save();
 
         // Generate a JWT token for a new user
-        const token = jwt.sign(
-            { userId: newUser.id, username: newUser.name },
-            process.env.JWT_SECRET,
-            { expiresIn: '1h' }
-        );
+        const token = getToken({ userId: newUser.id, username: newUser.name })
 
         // Sending a successful response with the generated token
-        return res.status(201).json({ token });
+        return res.status(201).json({ user: newUser, token: token });
 
     } catch (error) {
         console.error(error.message);
@@ -65,7 +62,9 @@ routes.post('/api/auth/login', async (req, res) => {
         const hashedPassword = await bcrypt.hash(password, existingUser.password);
 
         if (existingUser.password === hashedPassword) {
-            return res.status(200).json({ user: existingUser });;
+            // Generate a JWT token for a new user
+            const token = getToken({ userId: existingUser.id, username: existingUser.name })
+            return res.status(200).json({ user: existingUser, token: token });
         } else {
             return res.status(400).json({ message: 'Пользователь с таким email не обнаружен' });
         }
