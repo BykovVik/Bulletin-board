@@ -34,6 +34,7 @@ const RegForm = () => {
             const response = await http.post('/api/auth/register', formValues);
             //save token in localStorage
             localStorage.setItem('token', response.data.token);
+            localStorage.setItem('email', response.data.user.email);
             navigate('/')
         } catch (error:any) {
             setError(true);

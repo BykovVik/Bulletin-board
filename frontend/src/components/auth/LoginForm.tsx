@@ -24,8 +24,9 @@ const LoginForm = () => {
         e.preventDefault()
         try {
             //send form-data on server
-            await http.post('/api/auth/login', formValues);
-
+            const response = await http.post('/api/auth/login', formValues);
+            localStorage.setItem('token', response.data.token);
+            localStorage.setItem('email', response.data.user.email);
             navigate('/')
         } catch (error:any) {
             setError(true);
