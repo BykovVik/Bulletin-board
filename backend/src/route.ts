@@ -48,7 +48,7 @@ routes.post('/api/auth/register', async (req, res) => {
         return res.status(500).json({ message: 'Ошибка сервера' });
     }
 })
-
+// login route
 routes.post('/api/auth/login', async (req, res) => {
     const {email, password} = req.body
 
@@ -72,6 +72,12 @@ routes.post('/api/auth/login', async (req, res) => {
     } catch (error:any) {
         console.error(error.message)
     }
+})
+// check token route
+routes.post('/api/auth/check-token', async (req, res) => {
+    const token = req.body.token
+    const decoded = jwt.verify(token, process.env.SECRET_KEY);
+    res.json({decoded})
 })
 
 export default routes;

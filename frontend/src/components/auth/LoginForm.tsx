@@ -25,6 +25,8 @@ const LoginForm = () => {
         try {
             //send form-data on server
             const response = await http.post('/api/auth/login', formValues);
+            const check_token = await http.post('/api/auth/check-token', response.data.token)
+            console.log("ЭТОООО", check_token)
             localStorage.setItem('token', response.data.token);
             localStorage.setItem('email', response.data.user.email);
             navigate('/')
