@@ -76,7 +76,7 @@ routes.post('/api/auth/login', async (req, res) => {
 // check token route
 routes.post('/api/auth/check-token', async (req, res) => {
     const token = req.body.token
-    const decoded = jwt.verify(token, process.env.SECRET_KEY);
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
     res.json({decoded})
 })
 
