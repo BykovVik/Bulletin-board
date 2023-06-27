@@ -1,13 +1,44 @@
-import React from "react";
+import React, {useState, useEffect} from "react";
 import './Header.css'
-import { Button, Form } from "react-bootstrap";
+import { Button, Form, Dropdown } from "react-bootstrap";
 import logo from './logo.png'
 import {BsFillHouseAddFill, BsFillCarFrontFill, BsTools, BsWrenchAdjustableCircleFill, BsTvFill, BsFillPeopleFill, BsSignpostSplitFill, BsTencentQq} from 'react-icons/bs'
 import {RiTShirtFill} from 'react-icons/ri'
 import {GiCapybara} from "react-icons/gi";
 import { Link } from "react-router-dom";
+import http from '../../http-common'
+import { useNavigate } from "react-router-dom";
 
-const Header = (props:any) => {
+const Header = () => {
+
+    const [token, setToken] = useState<Boolean | null>(null)
+    const navigate = useNavigate()
+
+    useEffect(()=> {
+        const checkToken = async() => {
+            const userToken = localStorage.getItem('token')
+            if (userToken) {
+                try {
+                    await http.post('/api/auth/check-token', {token: localStorage.getItem('token')})
+                    setToken(true)
+                } catch(error) {
+                    console.error(error)
+                }
+            } else {
+                setToken(false)
+            }
+        }
+        checkToken()
+    }, [])
+
+    const ProfileHandler = () => {
+        navigate('/profile')
+    }
+    const LogOutHandler = () => {
+        localStorage.clear()
+        navigate('/')
+        setToken(false)
+    }
 
     return (
         <>
@@ -17,7 +48,30 @@ const Header = (props:any) => {
                 </div>
                 <div className="emptyItem"></div>
                 <div className="authBlock">
-                    <Link to={`/login`}>Sign up/Login</Link>
+                    { !token &&
+                        <Dropdown>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                Авторизация
+                            </Dropdown.Toggle>
+                    
+                            <Dropdown.Menu>
+                                <Link to={`/login`} className="dropdown-item">Логин</Link>
+                                <Link to={`/registration`} className="dropdown-item">Регистрация</Link>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    }
+                    { token &&
+                        <Dropdown>
+                            <Dropdown.Toggle variant="success" id="dropdown-basic">
+                                Профиль: {localStorage.getItem('email')}
+                            </Dropdown.Toggle>
+                    
+                            <Dropdown.Menu>
+                                <Dropdown.Item onClick={ProfileHandler}>Профиль</Dropdown.Item>
+                                <Dropdown.Item onClick={LogOutHandler}>Выход</Dropdown.Item>
+                            </Dropdown.Menu>
+                        </Dropdown>
+                    }
                 </div>
                 <div>
                     <Button variant="success">Write an ad</Button>
