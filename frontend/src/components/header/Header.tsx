@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import './Header.css'
-import { Button, Form, Dropdown } from "react-bootstrap";
+import { Button, Form, Dropdown, Modal } from "react-bootstrap";
 import logo from './logo.png'
 import {BsFillHouseAddFill, BsFillCarFrontFill, BsTools, BsWrenchAdjustableCircleFill, BsTvFill, BsFillPeopleFill, BsSignpostSplitFill, BsTencentQq} from 'react-icons/bs'
 import {RiTShirtFill} from 'react-icons/ri'
@@ -12,7 +12,11 @@ import { useNavigate } from "react-router-dom";
 const Header = () => {
 
     const [token, setToken] = useState<Boolean | null>(null)
+    const [show, setShow] = useState(false);
     const navigate = useNavigate()
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
     useEffect(()=> {
         const checkToken = async() => {
@@ -75,15 +79,26 @@ const Header = () => {
                 </div>
                 { !token &&
                     <div>
-                        <Button className="no_auth_button">Дать объявление</Button>
+                        <Button variant="success" className="no_auth_button" onClick={handleShow}>Дать объявление</Button>
                     </div>
                 }
                 { token &&
                     <div>
-                        <Button className="auth_button">Дать объявление</Button>
+                        <Button variant="success" className="auth_button">Дать объявление</Button>
                     </div>
                 }
             </div>
+            <Modal show={show} onHide={handleClose} centered>
+                <Modal.Header closeButton>
+                <Modal.Title>Ограничение доступа</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>Создавать объявления может только зарегестрированный пользователь. Перейдите к разделу <b>авторизация</b></Modal.Body>
+                <Modal.Footer>
+                <Button variant="success" onClick={handleClose}>
+                    Close
+                </Button>
+                </Modal.Footer>
+            </Modal>
             <div className="searchLine">
                 <Form>
                     <Form.Select aria-label="Default select example">
