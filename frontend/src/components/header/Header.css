@@ -4,10 +4,28 @@
     padding: 1%;
     align-items: center;
 }
+.no_auth_button {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid #C34F24;
+    color: #C34F24;
+}
+.no_auth_button:hover {
+    background-color: rgba(0, 0, 0, 0);
+    border: 2px solid #9F360F;
+    color: #9F360F;
+}
+.auth_button {
+    background-color: #C34F24;
+    border: 2px solid #C34F24;
+    color: white;
+}
+.auth_button:hover {
+    background-color: #9F360F;
+    border: 2px solid #9F360F;
+    color: white;
+}
 .authBlock {
-    border-right: 2px solid rgb(175, 175, 175);
-    margin-right: 2%;
-    padding-right: 2%;
+    margin-right: 1%;
 }
 .authBlock > a {
     color: rgb(175, 175, 175);

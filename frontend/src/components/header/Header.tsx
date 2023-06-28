@@ -73,9 +73,16 @@ const Header = () => {
                         </Dropdown>
                     }
                 </div>
-                <div>
-                    <Button variant="success">Write an ad</Button>
-                </div>
+                { !token &&
+                    <div>
+                        <Button className="no_auth_button">Дать объявление</Button>
+                    </div>
+                }
+                { token &&
+                    <div>
+                        <Button className="auth_button">Дать объявление</Button>
+                    </div>
+                }
             </div>
             <div className="searchLine">
                 <Form>
